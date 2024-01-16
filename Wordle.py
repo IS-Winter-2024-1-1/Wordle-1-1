@@ -18,6 +18,13 @@ def wordle():
     gw = WordleGWindow()
     gw.add_enter_listener(enter_action)
 
+    random_word = random.choice(FIVE_LETTER_WORDS).upper()
+    # print(f"Random Word: {random_word}")
+    for column, letter in enumerate(random_word):
+        # print(f"Setting letter '{letter}' in row 0, column {column}")
+        if column < N_COLS:
+            gw.set_square_letter(0, column, letter)
+
 # Startup code
 
 if __name__ == "__main__":
