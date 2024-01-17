@@ -13,17 +13,35 @@ from WordleGraphics import WordleGWindow, N_COLS, N_ROWS
 def wordle():
 
     def enter_action(s):
-        gw.show_message("You have to implement this method.")
+        if s.lower() in FIVE_LETTER_WORDS:
+            if gw.get_current_row() + 1 < N_ROWS:
+                gw.show_message('That\'s a word, yeah')
+                gw.set_current_row(gw.get_current_row() + 1)
+            else:
+                gw.show_message('Game Over')
+
+        else:
+            gw.show_message("Not in word list")
+
+
 
     gw = WordleGWindow()
     gw.add_enter_listener(enter_action)
 
     random_word = random.choice(FIVE_LETTER_WORDS).upper()
+
+
+
+    # For milestone 1. Commented out for future purposes.
+    '''
     # print(f"Random Word: {random_word}")
     for column, letter in enumerate(random_word):
         # print(f"Setting letter '{letter}' in row 0, column {column}")
         if column < N_COLS:
             gw.set_square_letter(0, column, letter)
+    '''
+
+
 
 # Startup code
 
