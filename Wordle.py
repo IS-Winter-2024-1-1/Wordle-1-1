@@ -8,6 +8,7 @@ BE SURE TO UPDATE THIS COMMENT WHEN YOU WRITE THE CODE.
 import random
 
 from WordleDictionary import FIVE_LETTER_WORDS
+from swahiliDictionary import SWAHILI_FIVE_LETTER_WORDS
 from WordleGraphics import WordleGWindow, N_COLS, N_ROWS
 
 def wordle():
@@ -21,10 +22,11 @@ def wordle():
             gw.show_message('You guessed it!')
 
         # Check if guessed word is in dictionary.
-        elif s.lower() in FIVE_LETTER_WORDS:
+        elif (s.lower() in FIVE_LETTER_WORDS) or (s.lower() in SWAHILI_FIVE_LETTER_WORDS):
             row = gw.get_current_row()
 
-            # These variables are here so we can edit them for processing without changing the original words.
+            # These variables are here so we can edit them for processing
+            # without changing the original words.
             guessedWord = []
             tempRandom = []
             for x in range(5):
