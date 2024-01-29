@@ -1,19 +1,42 @@
 import tkinter as tk
+from tkinter import Checkbutton, IntVar
 import random
 from WordleDictionary import FIVE_LETTER_WORDS
 from swahiliDictionary import SWAHILI_FIVE_LETTER_WORDS
 from WordleGraphics import WordleGWindow, N_COLS, N_ROWS
 
+def colorblindY(wordBank):
+    colorblind = True
+    root.destroy()
+    
+    wordle(wordBank, colorblind)
+
+def colorblindN(wordBank):
+    colorblind = False
+    root.destroy()
+
+    wordle(wordBank, colorblind)
+
 def english():
     wordBank = FIVE_LETTER_WORDS
     root.destroy()
-    wordle(wordBank)
+
+    # Ask for colorblindness
+    label = tk.Label(root, text='ColorBlind Mode')
+
+    bYes = tk.Button(root, text="Yes", command=colorblindY)
+    bNo = tk.Button(root, text="No", command=colorblindN)
+    
+    for el in [label, bYes, bNo]:
+        el.pack()
+
 
 def swahili():
     # Assuming you have FIVE_LETTER_WORDS_SWAHILI defined in your WordleDictionary module
     wordBank = SWAHILI_FIVE_LETTER_WORDS
     root.destroy()
-    wordle(wordBank)
+    # Ask for colorblindness
+
 
 def modal(question):
     if question in questionsAsked:
@@ -24,7 +47,7 @@ def modal(question):
 
     bEnglish = tk.Button(root, text="English", command=english)
     bSwahili = tk.Button(root, text="Swahili", command=swahili)
-
+    
     for el in [label, bEnglish, bSwahili]:
         el.pack()
 
