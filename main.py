@@ -1,6 +1,7 @@
 import tkinter as tk
 import random
 from WordleDictionary import FIVE_LETTER_WORDS
+from swahiliDictionary import SWAHILI_FIVE_LETTER_WORDS
 from WordleGraphics import WordleGWindow, N_COLS, N_ROWS
 
 def english():
@@ -10,7 +11,7 @@ def english():
 
 def swahili():
     # Assuming you have FIVE_LETTER_WORDS_SWAHILI defined in your WordleDictionary module
-    wordBank = FIVE_LETTER_WORDS_SWAHILI
+    wordBank = SWAHILI_FIVE_LETTER_WORDS
     root.destroy()
     wordle(wordBank)
 
@@ -37,7 +38,7 @@ def wordle(wordBank):
             gw.show_message('You guessed it!')
 
         # Check if guessed word is in dictionary.
-        elif s.lower() in FIVE_LETTER_WORDS:
+        elif s.lower() in wordBank:
             row = gw.get_current_row()
 
             # These variables are here so we can edit them for processing without changing the original words.
