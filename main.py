@@ -77,6 +77,7 @@ def wordle(wordBank):
             row = gw.get_current_row()
             for x in range(5):
                 gw.set_square_color(row, x, correct)
+                gw.set_key_color(gw.get_square_letter(row, x), correct)
             gw.show_message('You guessed it!')
 
         # Check if guessed word is in dictionary.
@@ -94,6 +95,7 @@ def wordle(wordBank):
             for x in range(5):
                 if guessedWord[x] == random_word[x]:
                     gw.set_square_color(row, x, correct)
+                    gw.set_key_color(gw.get_square_letter(row, x), correct)
 
                     # Replace the correct letter in each temp string with symbols so it will be excluded from future
                     # processing.
@@ -104,6 +106,7 @@ def wordle(wordBank):
             for x in range(5):
                 if (guessedWord[x] in tempRandom):
                     gw.set_square_color(row, x, close)
+                    gw.set_key_color(gw.get_square_letter(row, x), close)
 
                     # Replace the found letter in the random word so it will be excluded from future processing.
                     tempRandom[tempRandom.index(guessedWord[x])] = '*'
@@ -111,10 +114,11 @@ def wordle(wordBank):
                 # Color everything else gray.
                 elif gw.get_square_color(row, x) == "#FFFFFF":
                     gw.set_square_color(row, x, wrong)
+                    gw.set_key_color(gw.get_square_letter(row, x), wrong)
 
 
 
-            # Check if it's game over. If not, ove to the next row.
+            # Check if it's game over. If not, over to the next row.
             if row + 1 < N_ROWS:
                 gw.show_message('') # Blank out message
                 gw.set_current_row(gw.get_current_row() + 1)

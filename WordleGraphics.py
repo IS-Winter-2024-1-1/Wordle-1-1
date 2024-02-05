@@ -96,17 +96,25 @@ class WordleGWindow:
                                  MESSAGE_Y)
 
         def key_action(tke):
-            #print(tke)
+            print(tke)
             if isinstance(tke, str):
                 ch = tke.upper()
             else:
                 ch = tke.char.upper()
-            if ch == "\007" or ch == "\177" or ch == "DELETE":
+            # if ch == "\007" or ch == "\177" or ch == "DELETE":
+            #     self.show_message("")
+            #     if self._row < N_ROWS and self._col > 0:
+            #         self._col -= 1
+            #         sq = self._grid[self._row][self._col]
+            #         sq.set_letter(" ")
+
+            if ch == '\x08' or ch == 'BACKSPACE':
                 self.show_message("")
                 if self._row < N_ROWS and self._col > 0:
                     self._col -= 1
                     sq = self._grid[self._row][self._col]
                     sq.set_letter(" ")
+
             elif ch == "\r" or ch == "\n" or ch == "ENTER":
                 self.show_message("")
                 s = ""
